@@ -958,8 +958,8 @@ def add_jpeg_decoding(input_width, input_height, input_depth, input_mean,
         preprocessing steps.
     """
     jpeg_data = tf.placeholder(tf.string, name='DecodeJPGInput')
-    #decoded_image = tf.image.decode_jpeg(jpeg_data, channels=input_depth)
     decoded_image = tf.image.decode_jpeg(jpeg_data, channels=input_depth)
+    
     decoded_image_as_float = tf.cast(decoded_image, dtype=tf.float32)
     decoded_image_4d = tf.expand_dims(decoded_image_as_float, 0)
     resize_shape = tf.stack([input_height, input_width])
